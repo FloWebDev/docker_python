@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker_compose_path="$(dirname -- "${BASH_SOURCE[0]}")/docker-compose.yml"
+
+docker-compose -f $docker_compose_path exec python python "$@"
