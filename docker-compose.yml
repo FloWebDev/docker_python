@@ -2,12 +2,17 @@ version: "3"
 services:
 
   python:
-    container_name: python3
+    container_name: python-container
     build:
       context: ./
       dockerfile: Dockerfile
+    ports:
+      - "5001:5000" # By default, many Flask applications run on port 5000 (5001 on host to avoid troubles)
     stdin_open: true # docker run -i
     tty: true        # docker run -t
+    environment:
+      - DISPLAY=unix$DISPLAY
     volumes:
       - ./app:/usr/src/app
+      - /tmp/.X11-unix:/tmp/.X11-unix
     restart: always

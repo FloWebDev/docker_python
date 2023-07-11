@@ -15,5 +15,5 @@ down:
 	docker-compose down --remove-orphans
 
 bash:
-	docker-compose exec python /bin/sh
+	docker-compose exec python bash
 
