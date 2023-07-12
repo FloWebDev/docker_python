@@ -20,3 +20,21 @@ $ xhost +
 ```
 
 Source : https://stackoverflow.com/questions/49169055/docker-tkinter-tclerror-couldnt-connect-to-display/49229627#49229627
+
+## Running Docker Containers as a Non-root User with a Custom UID / GID
+
+Example:
+
+```
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g "${GID}" python \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" python
+
+USER python
+
+# Everything after this point will run as the python user with a specific UID / GID
+```
+
+Source : https://nickjanetakis.com/blog/running-docker-containers-as-a-non-root-user-with-a-custom-uid-and-gid

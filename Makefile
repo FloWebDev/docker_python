@@ -1,3 +1,6 @@
+IDU := $(shell id -u)
+IDG := $(shell id -g)
+
 .PHONY: help build-up down
 
 help:
@@ -9,7 +12,9 @@ help:
 	@echo "  build  - Access to bash container."
 
 build-up:
-	docker-compose up --build -d
+	docker-compose build --build-arg UID=$(IDU) --build-arg GID=$(IDG)
+	docker-compose up -d
+	echo "docker-compose up with USER: $(IDU)(uid) GROUP: $(IDG)(gid)"
 
 down:
 	docker-compose down --remove-orphans
