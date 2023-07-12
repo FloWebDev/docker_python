@@ -38,3 +38,15 @@ USER python
 ```
 
 Source : https://nickjanetakis.com/blog/running-docker-containers-as-a-non-root-user-with-a-custom-uid-and-gid
+
+## Creation of virtual environments
+
+Some commands to known
+
+* Create a virtual environment: `python -m venv env` (env is a 
+naming convention)
+* Activate virtual environment: `source env/bin/activate`
+* Deactivate: `deactivate` (anywhere)
+* To install dependancies: `pip install -r requirements.txt`
+* To create requirements file: `pip freeze > requirements.txt`
+* To remove virtuel environment: `rm -fr env/`
