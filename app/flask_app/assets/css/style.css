@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+#mainContainer {
+    border: 1px solid black;
+    width: 97%;
+    height: 500px;
+    margin: 1rem auto;
+}

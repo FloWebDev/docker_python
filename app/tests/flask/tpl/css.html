@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    #mainContainer {
+        margin: 1rem 0 auto;
+        width: 95%;
+        height: 90vh;
+    }
+
+    #menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row nowrap;
+        gap: 1rem;
+    }
+
+    .subMenu {
+        border: 1px solid blue;
+        margin: 0.5rem 0 0.5rem 0;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    #slider {
+        width: 950px;
+        height: 250px;
+        margin: auto;
+        position: relative;
+        border: 1px solid black;
+        overflow: hidden;
+        /* z-index: 1; */
+    }
+
+    .slide {
+        position: absolute;
+        width: 100%;
+        height: 250px;
+        transform: translateY(100%);
+        /* z-index: -1; */
+    }
+
+    .slide.active {
+        position: absolute;
+        width: 100%;
+        height: 250px;
+        transform: translateY(0);
+        transition: 500ms;
+    }
+</style>
+<body>
+    <div id="mainContainer">
+        <div id="menu">
+            <div class="subMenu" data-slide="blue">Menu 1</div>
+            <div class="subMenu" data-slide="green">Menu 2</div>
+            <div class="subMenu" data-slide="yellow">Menu 3</div>
+        </div>
+        <div id="slider">
+            <div class="slide blue" style="background-color: blue;"></div>
+            <div class="slide green" style="background-color: green;"></div>
+            <div class="slide yellow" style="background-color: yellow;"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            document.querySelector('.slide.blue').classList.add('active');
+            
+            document.querySelectorAll('.subMenu').forEach(el => {
+                el.addEventListener('click', e => {
+                    classTarget = e.target.getAttribute('data-slide');
+
+                    document.querySelectorAll('.slide').forEach(el => {
+                        el.classList.remove('active');
+                    })
+
+                    document.querySelector('.slide.' + classTarget).classList.add('active');
+                })
+            })
+        })
+    </script>
+</body>
+</html>

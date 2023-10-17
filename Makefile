@@ -20,5 +20,5 @@ down:
 	docker-compose down --remove-orphans
 
 bash:
-	docker-compose exec python bash
+	docker-compose exec -u www-data python bash
 
